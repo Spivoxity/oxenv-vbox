@@ -1,0 +1,57 @@
+@import url("/usr/share/themes/PiXflat/gtk-3.0/gtk.css");
+@define-color theme_selected_bg_color #87909A;
+@define-color theme_selected_fg_color #EFEFEF;
+@define-color bar_bg_color #EDECEA;
+@define-color bar_fg_color #000000;
+
+scrollbar button
+{
+	min-width: 7px;
+	min-height: 7px;
+}
+
+scrollbar slider
+{
+	min-width: 7px;
+	min-height: 7px;
+}
+
+scrollbar.vertical button.down
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_d");
+}
+
+scrollbar.vertical button.up
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_u");
+}
+
+scrollbar.horizontal button.down
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_r");
+}
+
+scrollbar.horizontal button.up
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_l");
+}
+
+scrollbar.vertical button:disabled.down
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_d_d");
+}
+
+scrollbar.vertical button:disabled.up
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_u_d");
+}
+
+scrollbar.horizontal button:disabled.down
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_r_d");
+}
+
+scrollbar.horizontal button:disabled.up
+{
+	-gtk-icon-source: -gtk-icontheme("scroll_l_d");
+}

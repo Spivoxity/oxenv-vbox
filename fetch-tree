@@ -1,0 +1,5 @@
+mkdir -p tree
+
+for f in .config .dmrc .gtkrc-2.0 .local .profile .xscreensaver; do
+    rsync -av oxenv:$f tree
+done

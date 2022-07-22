@@ -1,0 +1,4 @@
+# /etc/fstab: static file system information.
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/sda1       /               ext4    errors=remount-ro   0       1
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
