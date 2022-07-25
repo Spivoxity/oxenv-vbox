@@ -62,6 +62,9 @@ Plugin {
       id=pcmanfm.desktop
     }
     Button {
+      id=geany.desktop
+    }
+    Button {
       id=lxterminal.desktop
     }
   }
