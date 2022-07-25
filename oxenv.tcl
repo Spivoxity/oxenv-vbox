@@ -87,6 +87,7 @@ proc install-desktop {} {
     # Unneeded fluff
     apt-get remove rp-bookshelf xscreensaver pavucontrol
     apt-get autoremove
+    sudo-cmd rm -f /etc/xdg/autostart/light-locker.desktop
 }
 
 proc install-tools {} {
@@ -101,7 +102,8 @@ proc install-tools {} {
 
     # Software for Digital Systems
     apt-get install \
-        gcc-arm-none-eabi gdb-multiarch minicom python3-pip
+        gcc-arm-none-eabi gdb-multiarch \
+        pulseview sigrok-firmware-fx2lafw minicom python3-pip
     sudo-cmd pip3 install pyocd
 }
 
