@@ -26,6 +26,10 @@ proc machine {goal} {
     }
 }
 
+proc shell {args} {
+    eval [concat exec $args >@stdout 2>@stderr]
+}
+
 proc ssh-cmd {args} {
     set cmd [concat ssh oxenv $args]
     puts ">>> $cmd"
@@ -118,7 +122,7 @@ proc install-settings {} {
     install-file lightdm.conf /etc/lightdm/lightdm.conf
 
     puts ">>> personal settings"
-    exec rsync -av tree/ oxenv: >@stdout 2>@stderr
+    shell rsync -av tree/ oxenv:
 
     machine down; machine up;   # Reboot to log in guest for first time
 
@@ -142,10 +146,7 @@ proc clone-disk {} {
     vbox-manage storageattach Oxenv \
         --storagectl SATA --port 1 --type hdd --medium $disk1
 
-    machine up
-
-    # Just for safety
-    apt-get install parted
+    machine up; after 10000
 
     # Clear cache
     apt-get clean
@@ -203,12 +204,14 @@ proc grub-install {} {
     sudo-cmd chroot /mnt update-grub
 }    
 
-proc create-ova {} {
+proc sanitise {} {
     machine up
 
     # Remove SSH id
     ssh-cmd rm .ssh/authorized_keys
+}
 
+proc create-ova {} {
     machine down
 
     # Remove the CD
@@ -217,6 +220,7 @@ proc create-ova {} {
         --medium emptydrive
 
     # Export an OVA file
+    shell rm oxenv.ova
     vbox-manage export Oxenv -o oxenv.ova
 }
 
@@ -226,8 +230,18 @@ proc the-works {} {
     install-tools
     install-settings
     clone-disk
+    sanitise
     create-ova
-    # vbox-manage unregistervm Oxenv --delete
+}
+
+proc tidy-up {} {
+    global disk0 disk1
+
+    machine down
+    vbox-manage unregistervm Oxenv --delete
+    if {[file exists $disk0]} {vbox-manage closemedium $disk0 --delete}
+    if {[file exists $disk1]} {vbox-manage closemedium $disk1 --delete}
+    shell rmdir Oxenv
 }
 
 if {! $tcl_interactive} {
