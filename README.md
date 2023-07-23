@@ -11,4 +11,4 @@ The script `oxenv.tcl` automates preparing the OVA: see
 https://spivey.oriel.ox.ac.uk/corner/Making_a_VirtualBox_image for a
 description of the process, and
 https://spivey.oriel.ox.ac.uk/corner/Installing_the_Oxenv_virtual_appliance
-for intructions on installing the resulting appliance.
+for instructions on installing the resulting appliance.
