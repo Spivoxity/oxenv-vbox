@@ -1,6 +1,6 @@
 #!/usr/bin/tclsh
 
-set enable(digisys) 0
+set enable(digisys) 1
 set enable(compilers) 1
 
 if {! [info exists status]} {
@@ -134,7 +134,7 @@ proc install-tools {} {
     if {$enable(compilers)} {
         # Software for Compilers
         apt-get install \
-            ocaml-nox qemu-user gcc-arm-linux-gnueabihf tcl
+            gcc ocaml-nox qemu-user gcc-arm-linux-gnueabihf tcl
     }
 
     # Software for Digital Systems (omitting pulseview)

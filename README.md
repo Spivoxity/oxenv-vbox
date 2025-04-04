@@ -8,7 +8,11 @@ machine.  Look under Releases to download an Open Virtualisation
 Archive (OVA) file.
 
 The script `oxenv.tcl` automates preparing the OVA: see
-https://spivey.oriel.ox.ac.uk/corner/Making_a_VirtualBox_image for a
-description of the process, and
-https://spivey.oriel.ox.ac.uk/corner/Installing_the_Oxenv_virtual_appliance
+
+https://spivoxity.net/corner/Making_a_VirtualBox_image
+
+for a description of the process, and
+
+https://spivoxity.net/corner/Installing_the_Oxenv_virtual_appliance
+
 for instructions on installing the resulting appliance.
